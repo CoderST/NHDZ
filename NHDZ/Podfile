@@ -1,0 +1,16 @@
+# Uncomment the next line to define a global platform for your project
+ platform :ios, '8.1'
+ use_frameworks!
+target 'NHDZ' do
+pod 'Alamofire'
+#pod 'SnapKit'
+pod 'SVProgressHUD'
+pod 'Kingfisher', '~> 3.2.4'
+#pod 'MJExtension', '~> 3.0.13'
+pod 'MJRefresh', '~> 3.1.12'
+pod 'XHLaunchAd', '~> 3.3.0'
+pod 'SKPhotoBrowser'
+pod 'DACircularProgress', '~> 2.3.1'
+pod 'HandyJSON', '~> 1.7.2'
+
+end
