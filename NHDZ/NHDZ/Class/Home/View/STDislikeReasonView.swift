@@ -47,7 +47,7 @@ class STDislikeReasonView: UIView {
     fileprivate lazy var bottomView : STDislikeBottomView = {
        
         let bottomView = STDislikeBottomView()
-        bottomView.backgroundColor = .yellow
+//        bottomView.backgroundColor = .yellow
         return bottomView
         
     }()

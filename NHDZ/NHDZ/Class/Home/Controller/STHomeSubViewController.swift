@@ -28,7 +28,7 @@ class STHomeSubViewController: STBaseViewController {
         collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.backgroundColor = UIColor.gray
+        collectionView.backgroundColor = UIColor.white
         return collectionView;
         
     }()

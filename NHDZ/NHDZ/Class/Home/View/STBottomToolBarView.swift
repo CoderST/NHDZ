@@ -17,6 +17,7 @@ class STBottomToolBarView: UIView {
         let zanButton = STCustomButton()
         zanButton.setImage(UIImage(named: "digupicon_textpage"), for: .normal)
         zanButton.setImage(UIImage(named: "digupicon_textpage_night"), for: .highlighted)
+        zanButton.setTitleColor(.gray, for: .normal)
         return zanButton
     }()
     /// 踩
@@ -24,6 +25,7 @@ class STBottomToolBarView: UIView {
         let caiButton = STCustomButton()
         caiButton.setImage(UIImage(named: "digdownicon_textpage"), for: .normal)
         caiButton.setImage(UIImage(named: "digdownicon_textpage_night"), for: .highlighted)
+        caiButton.setTitleColor(.gray, for: .normal)
         return caiButton
     }()
     /// 评论
@@ -31,6 +33,7 @@ class STBottomToolBarView: UIView {
         let commentButton = STCustomButton()
         commentButton.setImage(UIImage(named: "commenticon_textpage"), for: .normal)
         commentButton.setImage(UIImage(named: "commenticon_textpage_night"), for: .highlighted)
+        commentButton.setTitleColor(.gray, for: .normal)
         return commentButton
     }()
     /// 转发
@@ -38,6 +41,7 @@ class STBottomToolBarView: UIView {
         let shareButton = STCustomButton()
         shareButton.setImage(UIImage(named: "moreicon_textpage"), for: .normal)
         shareButton.setImage(UIImage(named: "moreicon_textpage_night"), for: .highlighted)
+        shareButton.setTitleColor(.gray, for: .normal)
         return shareButton
     }()
     
@@ -111,7 +115,7 @@ extension STBottomToolBarView {
         case CustomButtonType.shareButton.hashValue:
             print("分享")
         default:
-            print("")
+            print("-------")
         }
     }
 }

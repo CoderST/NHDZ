@@ -39,7 +39,7 @@ class STHomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         view.backgroundColor = UIColor.green
-        print("mmmmmmmmmm",view.frame)
+//        print("mmmmmm/mmmm",view.frame)
 
     }
     

@@ -68,7 +68,7 @@ extension MainTabBarController {
     fileprivate func setupChildsVC() {
         
         addChildVc(STHomeViewController(), title: "首页", normalImageName: "home_normal", selectedImageName: "home_door_press")
-        addChildVc(DiscoverViewController(), title: "发现", normalImageName: "Found_night", selectedImageName: "Found_press")
+        addChildVc(STDiscoverViewController(), title: "发现", normalImageName: "Found_night", selectedImageName: "Found_press")
         addChildVc(FreshViewController(), title: "新鲜", normalImageName: "freshnew_night", selectedImageName: "freshnew_press")
         addChildVc(MessageViewController(), title: "消息", normalImageName: "newstab_night", selectedImageName: "newstab_press")
     }
@@ -101,5 +101,11 @@ extension MainTabBarController {
 extension MainTabBarController : STTabbarDelegate{
     func didSelectButtonAtIndex(_ stTabbar: STTabbar, index: Int) {
         selectedIndex = index
+    }
+    
+    func didSelectplusButton(_ stTabbar: STTabbar, plusButton: STTabbarButton) {
+        debugLog("点击了加号按钮")
+        let testvc = TestViewController()
+        present(testvc, animated: true, completion: nil)
     }
 }

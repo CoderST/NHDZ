@@ -31,13 +31,14 @@ class STUserIconView: UIView {
         super.init(frame: frame)
         
         addSubview(iconImageView)
-        
+        clipsToBounds = true
+        layer.borderWidth = 0.5
+        layer.borderColor = UIColor.gray.cgColor
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-//        layer.cornerRadius = frame.width * 0.5
-//        clipsToBounds = true
+        layer.cornerRadius = frame.width * 0.5
         iconImageView.frame = bounds
     }
     

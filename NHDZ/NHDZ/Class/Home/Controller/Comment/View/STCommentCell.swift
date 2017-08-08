@@ -61,7 +61,7 @@ class STCommentCell: UICollectionViewCell {
         contentView.addSubview(contentLabel)
         contentView.addSubview(bottomLineView)
         
-        contentLabel.backgroundColor = .red
+//        contentLabel.backgroundColor = .red
     }
     
     

@@ -195,7 +195,7 @@ extension STVideoView {
                 
             }else{
                 sender.isSelected = false
-                print(STPlayerManageAPI.currentPlayer())
+//                print(STPlayerManageAPI.currentPlayer())
                 
                 STPlayerManageAPI.currentPlayer()?.pause()
             }
@@ -349,7 +349,7 @@ extension STVideoView {
         }
         
         //获取并赋值
-        print(AVAudioSession.sharedInstance().outputVolume)
+//        print(AVAudioSession.sharedInstance().outputVolume)
         yinLiangSlider.value = AVAudioSession.sharedInstance().outputVolume
         //添加监听
         NotificationCenter.default.addObserver(self, selector: #selector(self.changeVolumSlider), name: NSNotification.Name(rawValue: "AVSystemController_SystemVolumeDidChangeNotification"), object: nil)

@@ -190,11 +190,11 @@ extension STPageCollectionView : STTitlesViewDelegate {
     func stTitlesView(_ stTitlesView: STTitlesView, toIndex: Int) {
         
         let indexPath = IndexPath(item: 0, section: toIndex)
-        print(indexPath.item,indexPath.section)
+//        print(indexPath.item,indexPath.section)
         collectionView.scrollToItem(at: indexPath, at: .left, animated: false)
         collectionView.contentOffset.x -= layout.sectionInset.left
         //FIXME: scrollToItemAtIndexPath 方法滚动后没有回到正确的位置 
-        print("pppppp",collectionView.contentOffset.x)
+//        print("pppppp",collectionView.contentOffset.x)
         changePageControl()
     }
 }

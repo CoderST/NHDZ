@@ -12,14 +12,6 @@ import Alamofire
 
 fileprivate let viewHeight = sScreenH - NavAndStatusTotalHei - TabbarHei
 fileprivate let viewHeightScale : CGFloat = 2 / 3
-public enum kScrollDerection: Int {
-    
-    case none
-    
-    case up // scroll up.
-    
-    case down // scroll down.
-}
 fileprivate let STCollectionViewCellIdentifier = "STCollectionViewCellIdentifier"
 class STViewModel: NSObject,PlayProtocol {
     /// 数据
@@ -141,7 +133,7 @@ extension STViewModel : UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         //        print(indexPath.item)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: STCollectionViewCellIdentifier, for: indexPath) as! STCell
-        cell.contentView.backgroundColor = UIColor.randomColor()
+//        cell.contentView.backgroundColor = UIColor.randomColor()
         cell.indexPath = indexPath
         cell.delegate = self
         let connotationModelFrame = connotationModelFrameArray[indexPath.item]
@@ -157,12 +149,26 @@ extension STViewModel : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
         let connotationModelFrame = connotationModelFrameArray[indexPath.item]
         let size  = CGSize(width: sScreenW, height:  connotationModelFrame.cellHeight)
-        print("size = \(size)")
+//        print("size = \(size)")
         return size
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let connotationModelFrame = connotationModelFrameArray[indexPath.item]
+        
+        // 如果是广告不跳转
+        if connotationModelFrame.contentAndComment.type == ShowAD_NormalType.AD.rawValue {
+            
+            guard let ad = connotationModelFrame.contentAndComment.ad else { return }
+            
+            let urlString = ad.avatar_url
+            guard let url = URL(string: urlString) else { return }
+            
+            UIApplication.shared.openURL(url)
+            
+            return
+        }
+        
         // 跳转评论
         let commentVC = STCommentViewController()
         commentVC.delegate = self

@@ -51,19 +51,14 @@ class STCommentViewController: UIViewController {
         let collectionView = UICollectionView(frame: CGRect(x: 0, y: NavAndStatusTotalHei, width: sScreenW, height: sScreenH - NavAndStatusTotalHei - TabbarHei), collectionViewLayout: layout)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
-//        collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
 
         collectionView.register(STCommentCell.self, forCellWithReuseIdentifier: cellCommentIdentifier)
         collectionView.register(STCommentReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: STCommentReusableViewIdentifier)
-
-        
         // 设置数据源
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = UIColor.gray
-        collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-
-//        collectionView.reg
         return collectionView;
         
     }()
@@ -93,7 +88,7 @@ class STCommentViewController: UIViewController {
         
         
         guard let needMoveView = needMoveView else { return }
-        print(needMoveView.frame)
+//        print(needMoveView.frame)
         needMoveView.backgroundColor = UIColor.blue
         let needMoveViewHeight = needMoveView.frame.height
         let collectionTop = needMoveViewHeight
@@ -216,7 +211,7 @@ extension STCommentViewController : UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellCommentIdentifier, for: indexPath) as! STCommentCell
 
-        cell.contentView.backgroundColor = UIColor.randomColor()
+//        cell.contentView.backgroundColor = UIColor.randomColor()
 //
 //        cell.indexPath = indexPath
         let commentGroup = commentVM.commentSectionDatas[indexPath.section]
@@ -246,22 +241,18 @@ extension STCommentViewController : UICollectionViewDelegateFlowLayout {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset.y)
+//        print(scrollView.contentOffset.y)
         //
         let offsetY = scrollView.contentOffset.y
         if offsetY > scrollowOffY {
             // 缩小动画
             if isScaleComplete == false {
-                print("bbbbbbbbb-11111111111")
-                
                 isScaleComplete = true
                 scaleAnimation()
             }
         }else{
             // 复位动画
             if isScaleComplete == true {
-                print("bbbbbbbbb-22222222222")
-                
                 isScaleComplete = false
                 resetAnimation()
             }
@@ -303,8 +294,8 @@ extension STCommentViewController {
 
         
         needMoveView.transform = CGAffineTransform.identity
-        print(needMoveView.frame)
+//        print(needMoveView.frame)
         needMoveView.frame = needMoveViewOriginalFrame
-        print(needMoveView.frame)
+//        print(needMoveView.frame)
     }
 }

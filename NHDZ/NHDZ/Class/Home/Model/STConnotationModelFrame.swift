@@ -5,22 +5,7 @@
 //  Created by xiudou on 2017/7/29.
 //  Copyright © 2017年 CoderST. All rights reserved.
 //
-/*
- 
- media_type 2 gif
- media_type 2 文字 gif
- 
- media_type 3 视频
- media_type 3 文字 视频
- 
- media_type 4 文字 多图片
- 
- media_type 1 图片
- media_type 1 文字 图片
- 
- media_type 0 热门 文字
- media_type 0 文字
- */
+
 import UIKit
 /// 可见视图区域
 fileprivate let viewHeight = sScreenH - NavAndStatusTotalHei - TabbarHei
@@ -30,18 +15,6 @@ fileprivate let viewHeightScale : CGFloat = 2 / 3
 fileprivate let bottomTabbarViewHeight : CGFloat = 49
 fileprivate let maxSize = CGSize(width: sScreenW - 2 * margin, height: CGFloat(MAXFLOAT))
 fileprivate let deleButtonWH : CGFloat = 40
-enum ShowAD_NormalType : Int{
-    case Normal = 1
-    case AD = 5
-}
-
-enum Media_type : Int{
-    case Words = 0  // 只有文字
-    case Picture_Words = 1  // 图片或者图片和文字
-    case GIF_Words = 2  // GIF或者GIF和文字
-    case Video_Words = 3  // 视频或者视频和文字
-    case MorePicture_Words = 4  // 多图片或者多图片和文字
-}
 
 class STConnotationModelFrame: NSObject {
     // MARK:- 对外数据
@@ -50,6 +23,7 @@ class STConnotationModelFrame: NSObject {
     var userName : String = ""
     /// 用户子标题
     var userSubTitle : String = ""
+    var contentAttributedString : NSMutableAttributedString = NSMutableAttributedString()
     /// 图片地址
     var pictureString : String = ""
     /// gif地址
@@ -72,6 +46,8 @@ class STConnotationModelFrame: NSObject {
     var userInforViewFrame : CGRect = .zero
     /// 内容
     var contentLabelFrame : CGRect = .zero
+    /// 分类
+    var categoryNameViewFrame : CGRect = .zero
     /// 单个图片
     var imageFrame : CGRect = .zero
     /// gif图片
@@ -94,8 +70,6 @@ class STConnotationModelFrame: NSObject {
         self.contentAndComment = contentAndComment
         super.init()
         // type 1 正常展示  type 5 广告
-        
-        
         let type = contentAndComment.type
         if type == ShowAD_NormalType.Normal.rawValue {  // 正常
             guard let content = contentAndComment.group else { return }
@@ -172,7 +146,7 @@ class STConnotationModelFrame: NSObject {
         
         deleButtonFrame = CGRect(x: sScreenW - deleButtonWH, y: 0, width: deleButtonWH, height: deleButtonWH)
         
-        print("cellHeightmmmmmm = \(cellHeight)")
+//        print("cellHeightmmmmmm = \(cellHeight)")
     }
 }
 
@@ -187,15 +161,22 @@ extension STConnotationModelFrame {
         var y : CGFloat = 0
         if title.characters.count > 0{
             // 字段宽高
-            titleSize = title.sizeWithFont(titleFont, size: maxSize)
+            contentAttributedString = title.attributedString(title, titleFont, lineMargin: lineSpace)
+            titleSize = title.sizeWithFont(title, lineSpace, titleFont, maxSize.width)
             y = userIconFrame.maxY + margin
         }else{
             y = userIconFrame.maxY
         }
         contentLabelFrame = CGRect(x: margin, y: y, width: titleSize.width, height: titleSize.height)
        
+        // 分类名称
+        let categoryName = content.category_name
+        // 字段宽高
+        let categoryNameSize = categoryName.sizeWithFont(titleFont, size: maxSize)
+        categoryNameViewFrame = CGRect(x: contentLabelFrame.origin.x, y: contentLabelFrame.maxY + margin, width: categoryNameSize.width + margin, height: categoryNameSize.height + margin)
         
-        cellHeight = contentLabelFrame.maxY + margin
+        
+        cellHeight = categoryNameViewFrame.maxY + margin
         
     }
     
@@ -223,7 +204,7 @@ extension STConnotationModelFrame {
         }
         let resultSize = picHeight(content, CGFloat(largeImage.r_width), CGFloat(largeImage.r_height))
         
-        gifFrame = CGRect(x: margin, y: contentLabelFrame.maxY + margin, width: resultSize.width, height: resultSize.height)
+        gifFrame = CGRect(x: margin, y: cellHeight, width: resultSize.width, height: resultSize.height)
         cellHeight = gifFrame.maxY + margin
         
     }
@@ -238,7 +219,7 @@ extension STConnotationModelFrame {
         if scaleHeight > CellPictureMaxH {
             content.isBigPicture = true
 //                        userName = "大大大大大大"
-            print("大大大大大大",userName,resultHeight)
+//            print("大大大大大大",userName,resultHeight)
             resultHeight = CellPictureBreakH
         }else{
             resultHeight = scaleHeight
@@ -268,7 +249,7 @@ extension STConnotationModelFrame {
             resultWidth = sScreenW
         }
         
-        videoFrame = CGRect(x: 0, y: contentLabelFrame.maxY + margin, width: resultWidth, height: resultHeight)
+        videoFrame = CGRect(x: 0, y: cellHeight, width: resultWidth, height: resultHeight)
         cellHeight = videoFrame.maxY + margin
     }
     
@@ -277,7 +258,7 @@ extension STConnotationModelFrame {
         guard let thumb_image_list = content.thumb_image_list else { return }
         let photosView = STPhotosView()
         let photosViewSize = photosView.sizeWithCount(thumb_image_list.count)
-        let point = CGPoint(x: margin, y: contentLabelFrame.maxY + margin)
+        let point = CGPoint(x: margin, y: cellHeight)
         thumbImageListFrame = CGRect(origin: point, size: photosViewSize)
         cellHeight = thumbImageListFrame.maxY + margin
     }
@@ -294,6 +275,7 @@ extension STConnotationModelFrame {
             
             let resultHeight = resultWidth * imageHeight / imageWidth
             imageFrame = CGRect(x: margin, y: contentLabelFrame.maxY + margin, width: CGFloat(resultWidth), height: CGFloat(resultHeight))
+            categoryNameViewFrame = .zero
             cellHeight = imageFrame.maxY + margin
             
         }

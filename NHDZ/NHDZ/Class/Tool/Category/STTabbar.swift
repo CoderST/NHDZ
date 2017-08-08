@@ -9,7 +9,10 @@
 import UIKit
 // didSelectButtonAtIndex
 protocol STTabbarDelegate : class{
+    /// 控制器
     func didSelectButtonAtIndex(_ stTabbar : STTabbar, index : Int)
+    /// 加号
+    func didSelectplusButton(_ stTabbar : STTabbar, plusButton : STTabbarButton)
 }
 class STTabbar: UIView {
     
@@ -53,8 +56,9 @@ class STTabbar: UIView {
     }
     
 
-    @objc fileprivate func plusButtonAction(_ button : UIButton){
+    @objc fileprivate func plusButtonAction(_ button : STTabbarButton){
 //        print(plusButtonAction)
+        delegate?.didSelectplusButton(self, plusButton: button)
     }
 
     

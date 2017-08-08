@@ -41,7 +41,7 @@ class STCell: UICollectionViewCell {
     lazy var needMoveView : UIView = {
         
         let needMoveView = UIView()
-        needMoveView.backgroundColor = .red
+//        needMoveView.backgroundColor = .red
         return needMoveView
         
     }()
@@ -76,7 +76,7 @@ class STCell: UICollectionViewCell {
     lazy var userInforView : UIView = {
         
         let userInforView = UIView()
-        userInforView.backgroundColor = .yellow
+//        userInforView.backgroundColor = .yellow
         return userInforView
         
     }()
@@ -90,6 +90,20 @@ class STCell: UICollectionViewCell {
         return contentLabel
         
     }()
+    
+    /// 分类名称
+    fileprivate lazy var categoryNameLabel : UILabel = {
+        let categoryNameLabel = UILabel()
+        categoryNameLabel.isUserInteractionEnabled = true
+        categoryNameLabel.textAlignment = .center
+        categoryNameLabel.font = titleFont
+        categoryNameLabel.backgroundColor = .white
+        categoryNameLabel.clipsToBounds = true
+        categoryNameLabel.layer.borderWidth = 0.5
+        categoryNameLabel.layer.borderColor = UIColor.black.cgColor
+        return categoryNameLabel
+    }()
+    
     /// 单个图片
     fileprivate lazy var pictureImageView : STCellPictureView = {
         
@@ -116,7 +130,6 @@ class STCell: UICollectionViewCell {
     fileprivate lazy var photosView : STPhotosView = {
         
         let photosView = STPhotosView()
-        photosView.backgroundColor = UIColor.purple
         return photosView
         
     }()
@@ -133,6 +146,7 @@ class STCell: UICollectionViewCell {
     fileprivate lazy var deleButton : UIButton = {
         let deleButton = UIButton()
         deleButton.setTitle("删除", for: .normal)
+        deleButton.setTitleColor(.red, for: .normal)
         return deleButton
     }()
     lazy var label : UILabel = UILabel()
@@ -157,35 +171,30 @@ class STCell: UICollectionViewCell {
                 
                 switch medioType {
                 case Media_type.Words.rawValue:
-                    print("")
                     contentLabel.isHidden = false
                     photosView.isHidden = true
                     gifImageView.isHidden = true
                     videlView.isHidden = true
                     photosView.isHidden = true
                 case Media_type.Picture_Words.rawValue:
-                    print("")
                     contentLabel.isHidden = false
                     photosView.isHidden = false
                     gifImageView.isHidden = true
                     videlView.isHidden = true
                     photosView.isHidden = true
                 case Media_type.GIF_Words.rawValue:
-                    print("")
                     contentLabel.isHidden = false
                     photosView.isHidden = true
                     gifImageView.isHidden = false
                     videlView.isHidden = true
                     photosView.isHidden = true
                 case Media_type.Video_Words.rawValue:
-                    print("")
                     contentLabel.isHidden = false
                     photosView.isHidden = true
                     gifImageView.isHidden = true
                     videlView.isHidden = false
                     photosView.isHidden = true
                 case Media_type.MorePicture_Words.rawValue:
-                    print("")
                     contentLabel.isHidden = false
                     photosView.isHidden = true
                     gifImageView.isHidden = true
@@ -222,6 +231,7 @@ class STCell: UICollectionViewCell {
         userInforView.addSubview(userNameLabel)
         userInforView.addSubview(userSubTitleLabel)
         needMoveView.addSubview(contentLabel)
+        needMoveView.addSubview(categoryNameLabel)
         needMoveView.addSubview(pictureImageView)
         needMoveView.addSubview(gifImageView)
         needMoveView.addSubview(videlView)
@@ -229,7 +239,8 @@ class STCell: UICollectionViewCell {
         needMoveView.addSubview(bottomTabbarView)
         contentView.addSubview(deleButton)
         
-        deleButton.addTarget(self, action: #selector(deleButtonClick), for: .touchUpInside)
+        addActions()
+        
         
     }
     
@@ -244,12 +255,46 @@ class STCell: UICollectionViewCell {
     }
 }
 
+// MARK:- 添加事件
+extension STCell {
+    
+     fileprivate func addActions(){
+        
+        deleButtonAction()
+        
+        categoryNameLabelAction()
+    }
+    
+    // 删除按钮
+    @objc fileprivate func deleButtonAction(){
+        
+        deleButton.addTarget(self, action: #selector(deleButtonClick), for: .touchUpInside)
+    }
+    
+    // 分类手势
+    @objc fileprivate func categoryNameLabelAction(){
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(STCell.categoryNameLabelTap))
+        categoryNameLabel.addGestureRecognizer(tap)
+        
+    }
+}
+
+// MARK:- 事件执行
 extension STCell {
     
     @objc fileprivate func deleButtonClick(){
         
         guard let indexPath = indexPath else { return }
         delegate?.deleGroup(self, connotationModelFrame,indexPath)
+    }
+    
+    @objc fileprivate func categoryNameLabelTap(){
+        
+        let categoryVC = STCategoryViewController()
+        categoryVC.category_id = connotationModelFrame?.contentAndComment.group?.category_id ?? 0
+        let nav = getNavigation()
+        nav.pushViewController(categoryVC, animated: true)
     }
 }
 
@@ -261,6 +306,11 @@ extension STCell {
         userIconImageView.frame = connotationModelFrame.userIconFrame
         userNameLabel.frame = connotationModelFrame.userNameFrame
         contentLabel.frame = connotationModelFrame.contentLabelFrame
+        
+        categoryNameLabel.frame = connotationModelFrame.categoryNameViewFrame
+        categoryNameLabel.layer.cornerRadius = connotationModelFrame.categoryNameViewFrame.height * 0.5
+        
+        
         pictureImageView.frame = connotationModelFrame.imageFrame
         gifImageView.frame = connotationModelFrame.gifFrame
         videlView.frame = connotationModelFrame.videoFrame
@@ -278,7 +328,8 @@ extension STCell {
 //            userIconImageView.kf.setImage(with: URL(string: user.avatar_url ?? ""))
             userIconImageView.iconImageURLString = user.avatar_url ?? ""
             userNameLabel.text = connotationModelFrame.userName
-            contentLabel.text = content.text
+            contentLabel.attributedText = connotationModelFrame.contentAttributedString
+            categoryNameLabel.text = content.category_name
             let url = URL(string: content.large_image?.url_list?.first?.url ?? "")
             pictureImageView.connotationModelFrame = connotationModelFrame
             //            gifImageView.kf.setImage(with: url)

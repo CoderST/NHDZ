@@ -72,7 +72,7 @@ extension STDislikeContainerView  {
         guard let title = button.titleLabel?.text else { return }
         
         if title == "确定" {
-            print("确定")
+//            print("确定")
             let reresultDislikeResonArrayon = dislikeView.resultDislikeResonArray
             if reresultDislikeResonArrayon.count == 0 {
                 return
@@ -94,7 +94,7 @@ extension STDislikeContainerView  {
             }
         }else{
             dismiss()
-            print("取消")
+//            print("取消")
         }
         
     }

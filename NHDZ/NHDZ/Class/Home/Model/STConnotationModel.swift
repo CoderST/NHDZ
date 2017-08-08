@@ -143,7 +143,9 @@ class Content: HandyJSON {
     var text: String = ""
 //    
 //    var online_time: Int = 0
-//    
+//  
+    /// 分类ID
+    var category_id: Int = 0
     /// 分类名称
     var category_name: String = ""
 //
@@ -151,8 +153,8 @@ class Content: HandyJSON {
 //    
 //    var create_time: Int = 0
 //    
-//    var category_id: Int = 0
-//    
+
+//
 //    var user_digg: Int = 0
 //    
 //    var category_type: Int = 0

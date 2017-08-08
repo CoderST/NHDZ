@@ -10,7 +10,7 @@ import UIKit
 /// 文本宽高
 extension String{
     
-     func sizeWithFont(_ font:UIFont,size : CGSize) -> CGSize {
+    func sizeWithFont(_ font:UIFont,size : CGSize) -> CGSize {
         let attributes = [NSFontAttributeName: font]
         let option = NSStringDrawingOptions.usesLineFragmentOrigin
         let size = self.boundingRect(with: size, options: option, attributes: attributes, context: nil).size
@@ -31,7 +31,7 @@ extension String{
 extension String {
     static func countStringFrome(_ count : Int)->String{
         let maxCount : Int = 10000
-       
+        
         if count > maxCount{
             let resultCount = CGFloat(count) / CGFloat(maxCount)
             let resultString = String(format: "%.2f万",resultCount)
@@ -53,6 +53,38 @@ extension String {
         let timeString = String(format: "%02d:%02d",minutes,seconds)
         return timeString
         
+    }
+}
+
+extension String {
+    /// 获取富文本
+    func attributedString(_ text : String, _ font : UIFont,lineMargin:CGFloat = 2)-> NSMutableAttributedString{
+        
+        // 1 设置间距
+        let paragraphStyle = NSMutableParagraphStyle()
+//        paragraphStyle.alignment = NSTextAlignment.justified//设置对齐方式
+//        paragraphStyle.lineBreakMode = NSLineBreakMode.byCharWrapping
+        
+        paragraphStyle.lineSpacing = lineMargin
+
+        // 2 NSKernAttributeName 自符间距
+        let attributes = [NSParagraphStyleAttributeName : paragraphStyle,NSKernAttributeName : 1.5] as [String : Any]
+        let attriStr = NSMutableAttributedString(string: text, attributes: attributes)
+        // 3 创建文字属性
+        let attriBute = [NSFontAttributeName : font]
+        attriStr.addAttributes(attriBute, range: NSMakeRange(0, text.characters.count))
+        return attriStr
+    }
+    
+    /// 获取富文本尺寸
+    func sizeWithFont(_ title : String?, _ lineSpeace : CGFloat, _ font : UIFont,_ maxWidth : CGFloat)->CGSize{
+        guard let title : NSString = title as NSString? else {return CGSize(width: 0, height: 0)}
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = lineSpeace
+        let attributes = [NSFontAttributeName: font,NSParagraphStyleAttributeName:paragraphStyle]
+        let maxSize = CGSize(width: maxWidth, height: CGFloat(MAXFLOAT))
+        let size = title.boundingRect(with: maxSize, options: NSStringDrawingOptions.usesLineFragmentOrigin , attributes: attributes, context: nil).size
+        return size
     }
 }
 
@@ -177,7 +209,7 @@ extension String{
         if textRange.location != NSNotFound {
             attributedString.addAttributes([NSBackgroundColorAttributeName : bgTextColor], range: textRange)
         }
-
+        
         return attributedString
     }
 }
@@ -218,7 +250,7 @@ extension String{
         }
         return attributedString
     }
-
+    
 }
 
 /// 改变字的删除线颜色
@@ -227,7 +259,7 @@ extension String{
         let attributedString = dy_changeStrikethroughColorWithTextStrikethroughColor(textStrikethroughColor: textStrikethroughColor, changeText: self)
         
         return attributedString
-
+        
     }
     func dy_changeStrikethroughColorWithTextStrikethroughColor(textStrikethroughColor : UIColor, changeText : String)->NSMutableAttributedString{
         let attributedString = NSMutableAttributedString(string: self)
@@ -390,7 +422,7 @@ extension String{
         }
         return attributedString
     }
-
+    
 }
 
 /// 改变字的基准线偏移 value>0坐标往上偏移 value<0坐标往下偏移
@@ -455,7 +487,7 @@ extension String{
 
 /// 改变字方向 NSWritingDirection
 extension String{
-
+    
     func dy_changeWritingDirectionWithTextExpansion(textWritingDirection : NSArray, changeText : String)->NSMutableAttributedString{
         let attributedString = NSMutableAttributedString(string: self)
         let ocString = self as NSString
@@ -470,7 +502,7 @@ extension String{
 
 /// 改变字的水平或者竖直 1竖直 0水平
 extension String{
-
+    
     func dy_changeVerticalGlyphFormWithTextVerticalGlyphForm(textVerticalGlyphForm : NSNumber, changeText : String)->NSMutableAttributedString{
         let attributedString = NSMutableAttributedString(string: self)
         let ocString = self as NSString
@@ -489,7 +521,7 @@ extension String{
     func dy_changeCTKernWithTextCTKern(textCTKern : NSNumber)->NSMutableAttributedString{
         let attributedString = NSMutableAttributedString(string: self)
         let textRange = NSMakeRange(0, self.characters.count - 1)
-            attributedString.addAttributes([kCTKernAttributeName as String : textCTKern], range: textRange)
+        attributedString.addAttributes([kCTKernAttributeName as String : textCTKern], range: textRange)
         return attributedString
     }
     
@@ -575,5 +607,5 @@ extension String{
     func doubleValue() -> Double{
         return (self as NSString).doubleValue
     }
-
+    
 }

@@ -51,7 +51,7 @@ class STPhotosView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor.purple
+        backgroundColor = UIColor.white
     }
     
     required init?(coder aDecoder: NSCoder) {
