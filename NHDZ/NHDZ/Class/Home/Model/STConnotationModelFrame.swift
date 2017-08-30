@@ -141,7 +141,7 @@ class STConnotationModelFrame: NSObject {
             ADPictureWordsAction(ad)
         }else{
             
-            print("ppppppppp-不知道的类型")
+            print("ppppppppp-不知道的类型",type)
         }
         
         deleButtonFrame = CGRect(x: sScreenW - deleButtonWH, y: 0, width: deleButtonWH, height: deleButtonWH)

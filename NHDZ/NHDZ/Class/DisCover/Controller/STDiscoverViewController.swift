@@ -26,8 +26,7 @@ class STDiscoverViewController: UIViewController {
     // collectionView
     fileprivate lazy var collectionView : UICollectionView = {[weak self] in
         // 设置layout属性
-        let layout = XDPlanFlowLayout()
-        layout.naviHeight = 0
+        let layout = UICollectionViewFlowLayout()
         let width = sScreenW
         // 默认值(如果改动可以添加代理方法)
         layout.minimumInteritemSpacing = 0
@@ -103,7 +102,7 @@ extension STDiscoverViewController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         
-        
+        print("numberOfItemsInSection",discoverVM.discoverFrameArray.count)
         return discoverVM.discoverFrameArray.count
     }
     
@@ -111,6 +110,7 @@ extension STDiscoverViewController : UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: STDiscoverCellIdentifier, for: indexPath) as! STDiscoverCell
         let discoverFrame = discoverVM.discoverFrameArray[indexPath.item]
+        print("cellForItemAt")
         cell.discoverFrame = discoverFrame
         return cell
     }

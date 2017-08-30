@@ -9,12 +9,13 @@
 import UIKit
 import SVProgressHUD
 fileprivate let STCollectionViewCellIdentifier = "STCollectionViewCellIdentifier"
+fileprivate let STAnchorCellIdentifier = "STAnchorCellIdentifier"
 class STHomeSubViewController: STBaseViewController {
-
+    
     var titleModel : TitleModle?
     
     fileprivate lazy var viewModel : STViewModel = STViewModel()
-    
+    fileprivate lazy var anchorviewModel : STAnchorViewModel = STAnchorViewModel()
     // collectionView
     lazy var collectionView : UICollectionView = {
         // 设置layout属性
@@ -32,7 +33,7 @@ class STHomeSubViewController: STBaseViewController {
         return collectionView;
         
     }()
-
+    
     
     override func viewDidLoad() {
         
@@ -41,25 +42,101 @@ class STHomeSubViewController: STBaseViewController {
         super.viewDidLoad()
         
         view.addSubview(collectionView)
-        // 2 绑定
-        viewModel.bindViewModel(bindView: collectionView)
-        
         // 3 添加数据
         guard let titleModel = titleModel else { return }
-        viewModel.loaddatas(titleModel.list_id ,finishCallBack: {
-            print(self.viewModel.connotationModelFrameArray.count)
-            self.endAnimation()
-            self.collectionView.reloadData()
+        
+        if titleModel.name == "直播" {
+            collectionView.delegate = self
+            collectionView.dataSource = self
+            collectionView.register(STAnchorCell.self, forCellWithReuseIdentifier: STAnchorCellIdentifier)
+            // 由于没有抓到直播接口,所以借用一下别的直播接口来充当画面效果
+            anchorviewModel.getRoomAnchorData(1, finishCallBack: {
+//                print(self.anchorviewModel.anchorlist.count)
+                self.collectionView.reloadData()
+                self.endAnimation()
+            }, noDataCallBack: {
+                
+            })
             
-        }) { (message) in
             
+        }else{
+            
+            
+            // 2 绑定
+            viewModel.bindViewModel(bindView: collectionView)
+            
+            viewModel.loaddatas(titleModel.list_id ,finishCallBack: {
+                print(self.viewModel.connotationModelFrameArray.count)
+                self.endAnimation()
+                self.collectionView.reloadData()
+                
+            }) { (message) in
+                
+            }
         }
         
-
+        
+        
+        // 4 添加下拉刷新
+        setupRefsh()
+        
     }
-
+    
     
     deinit {
         print("STHomeSubViewController=\(titleModel?.name ?? "") - 销毁")
     }
 }
+
+extension STHomeSubViewController {
+    
+    func setupRefsh(){
+        collectionView.mj_header = STRefreshGifHeader(refreshingTarget: self, refreshingAction: #selector(STHomeSubViewController.loadNewData))
+    }
+    
+    func loadNewData(){
+        print("刷新数据了~~~~`")
+        collectionView.mj_header.endRefreshing()
+    }
+}
+
+// MARK:- UICollectionViewDataSource
+extension STHomeSubViewController : UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
+        
+        return anchorviewModel.anchorFramelist.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: STAnchorCellIdentifier, for: indexPath) as! STAnchorCell
+        let anchorFrame = anchorviewModel.anchorFramelist[indexPath.item]
+        cell.anchorFrame = anchorFrame
+        return cell
+        
+    }
+    
+}
+
+// MARK:- UICollectionViewDelegateFlowLayout
+extension STHomeSubViewController : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
+        let anchorFrame = anchorviewModel.anchorFramelist[indexPath.item]
+        let size  = CGSize(width: sScreenW, height:  anchorFrame.cellHeight)
+        return size
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let anchorFramelist = anchorviewModel.anchorFramelist
+        let liveVC = STLiveAnchoViewController()
+//        liveVC.anchorFrame = anchorFrame
+        // 1 判断数组是否有值
+        if anchorFramelist.count == 0{
+            return
+        }
+        // 2 传递数组和当前indexpath
+        liveVC.showDatasAndIndexPath(anchorFramelist, indexPath)
+        present(liveVC, animated: true, completion: nil)
+    }
+    
+}
+
