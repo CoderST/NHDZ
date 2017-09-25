@@ -16,11 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-               // 设置住窗口
+        // 设置住窗口
         setupMainWindow()
         // 添加广告
         addAd()
 
+        // 获取时间
+        STBaseVM.requestNewestTime()
+        // 开始本地计时
+        STTimeManage.shareInstance.start()
         return true
     }
 

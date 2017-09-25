@@ -15,7 +15,6 @@ class STHomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
         automaticallyAdjustsScrollViewInsets = false
         
         setupData()

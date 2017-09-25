@@ -54,6 +54,9 @@ class STHomeSubViewController: STBaseViewController {
 //                print(self.anchorviewModel.anchorlist.count)
                 self.collectionView.reloadData()
                 self.endAnimation()
+                let time = STBaseVM.getUserDefaultsTime()
+                print("time = \(time)")
+
             }, noDataCallBack: {
                 
             })
@@ -66,7 +69,7 @@ class STHomeSubViewController: STBaseViewController {
             viewModel.bindViewModel(bindView: collectionView)
             
             viewModel.loaddatas(titleModel.list_id ,finishCallBack: {
-                print(self.viewModel.connotationModelFrameArray.count)
+                print("第一次加载",self.viewModel.connotationModelFrameArray.count)
                 self.endAnimation()
                 self.collectionView.reloadData()
                 
@@ -95,8 +98,17 @@ extension STHomeSubViewController {
     }
     
     func loadNewData(){
-        print("刷新数据了~~~~`")
-        collectionView.mj_header.endRefreshing()
+        guard let titleModel = titleModel else { return }
+        viewModel.loaddatas(titleModel.list_id ,finishCallBack: {
+            print("刷新数据了~~~~",self.viewModel.connotationModelFrameArray.count)
+
+            self.collectionView.mj_header.endRefreshing()
+            self.collectionView.reloadData()
+            
+        }) { (message) in
+            
+        }
+        
     }
 }
 

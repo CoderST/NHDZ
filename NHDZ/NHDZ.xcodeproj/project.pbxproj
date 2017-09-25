@@ -115,6 +115,9 @@
 		0FE148D41F42CEEB00FAFAB1 /* STRefreshGifHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE148D31F42CEEB00FAFAB1 /* STRefreshGifHeader.swift */; };
 		0FE4F55A1F008A0C001007AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FE4F5591F008A0C001007AA /* Assets.xcassets */; };
 		0FE4F55D1F008A0C001007AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FE4F55B1F008A0C001007AA /* LaunchScreen.storyboard */; };
+		0FF5E5FF1F78D79B00CEEBC4 /* STBaseVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF5E5FE1F78D79B00CEEBC4 /* STBaseVM.swift */; };
+		0FF5E6011F78DCBA00CEEBC4 /* STTimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF5E6001F78DCBA00CEEBC4 /* STTimeModel.swift */; };
+		0FF5E6031F78ECB800CEEBC4 /* STTimeManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF5E6021F78ECB800CEEBC4 /* STTimeManage.swift */; };
 		20C723702A8C8727D6DAF644 /* Pods_NHDZ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4840FD05AE76DA1D02ECBEA /* Pods_NHDZ.framework */; };
 /* End PBXBuildFile section */
 
@@ -230,6 +233,9 @@
 		0FE4F5591F008A0C001007AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0FE4F55C1F008A0C001007AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0FE4F55E1F008A0C001007AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0FF5E5FE1F78D79B00CEEBC4 /* STBaseVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STBaseVM.swift; sourceTree = "<group>"; };
+		0FF5E6001F78DCBA00CEEBC4 /* STTimeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STTimeModel.swift; sourceTree = "<group>"; };
+		0FF5E6021F78ECB800CEEBC4 /* STTimeManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STTimeManage.swift; sourceTree = "<group>"; };
 		3395E9AE50C7DDCDF82A850A /* Pods-NHDZ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NHDZ.release.xcconfig"; path = "Pods/Target Support Files/Pods-NHDZ/Pods-NHDZ.release.xcconfig"; sourceTree = "<group>"; };
 		C4840FD05AE76DA1D02ECBEA /* Pods_NHDZ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NHDZ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E590158F4CC2D5B851918A2A /* Pods-NHDZ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NHDZ.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NHDZ/Pods-NHDZ.debug.xcconfig"; sourceTree = "<group>"; };
@@ -564,6 +570,7 @@
 				0F8694571F3710E900315064 /* STCommentVM.swift */,
 				0FBAB9D01F3831CF00C5BA82 /* STCategoryVM.swift */,
 				0F92D43F1F442467007DB132 /* STAnchorViewModel.swift */,
+				0FF5E5FE1F78D79B00CEEBC4 /* STBaseVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -595,6 +602,8 @@
 		0FCA40EC1F009D07007D773B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0FF5E6001F78DCBA00CEEBC4 /* STTimeModel.swift */,
+				0FF5E6021F78ECB800CEEBC4 /* STTimeManage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -925,6 +934,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FF5E6031F78ECB800CEEBC4 /* STTimeManage.swift in Sources */,
 				0F86945A1F3710E900315064 /* STCommentVM.swift in Sources */,
 				0FCA40F91F009DE8007D773B /* MainTabBarController.swift in Sources */,
 				0F8694531F3710D800315064 /* STPlayerToolModel.swift in Sources */,
@@ -943,6 +953,7 @@
 				0F8694541F3710D800315064 /* STTitleInforModel.swift in Sources */,
 				0F8694921F37113600315064 /* STDislikeResonCell.swift in Sources */,
 				0FBAB9D11F3831CF00C5BA82 /* STCategoryVM.swift in Sources */,
+				0FF5E6011F78DCBA00CEEBC4 /* STTimeModel.swift in Sources */,
 				0F92D4441F442DD7007DB132 /* STAnchorCell.swift in Sources */,
 				0F8694341F370FEC00315064 /* STReourceLoaderManager.swift in Sources */,
 				0F8694961F37113600315064 /* STVideoView.swift in Sources */,
@@ -971,6 +982,7 @@
 				0F8694321F370FEC00315064 /* STPlayerManage.swift in Sources */,
 				0F8694351F370FEC00315064 /* URL+Extension.swift in Sources */,
 				0F86941D1F370FAD00315064 /* PresentModel.swift in Sources */,
+				0FF5E5FF1F78D79B00CEEBC4 /* STBaseVM.swift in Sources */,
 				0F8694791F37111E00315064 /* STCommentADView.swift in Sources */,
 				0F86941B1F370FAD00315064 /* LinearCollectionViewLayout.swift in Sources */,
 				0F8694A71F3731D300315064 /* STPageViewStyle.swift in Sources */,

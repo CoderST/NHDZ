@@ -103,9 +103,15 @@ let RemoveActionPlayer = "removeActionPlayer"
 let DislikeNSNotification = "dislikeNSNotification"
 /// 不喜欢确定和取消通知
 let DislikeSuccessNSNotification = "DislikeSuccessNSNotification"
+/// 时间
+let TimeActionNotification = "TimeActionNotification"
 
 // MARK:- UserDefaults
 let STNSUserDefaults = UserDefaults.standard
+
+// MARK:- key
+let APPKEY = "4f5885cb5270150ce7000016"
+let timeModelTime = "timeModelTime"
 
 // MARK:- debugLog
 // http://www.jianshu.com/p/88c59eea39f0

@@ -29,12 +29,13 @@ class STViewModel: NSObject,PlayProtocol {
         //        let type = -104
         //        let latitude = arc4random_uniform(20) + 20
         //        let longitude = arc4random_uniform(20) + 40
-        
+        // 获取最小时间
+        let time = STBaseVM.getSeverTime()
         var urlString : String = ""
         if type == -104 {
-            urlString = "http://lf.snssdk.com/neihan/stream/mix/v1/?content_type=\(type)&iid=11612214903&idfa=99F096BA-477A-4D0A-AB26-69B76DDB85C6&version_code=5.8.0&live_sdk_version=130&os_version=8.4&screen_width=640&aid=7&vid=D5CDF3B6-1637-454E-B4BD-5CA1DF31E543&content_type=\(type)&count=30&message_cursor=0&min_time=0&mpic=1"
+            urlString = "http://lf.snssdk.com/neihan/stream/mix/v1/?content_type=\(type)&iid=11612214903&idfa=99F096BA-477A-4D0A-AB26-69B76DDB85C6&version_code=5.8.0&live_sdk_version=130&os_version=8.4&screen_width=640&aid=7&vid=D5CDF3B6-1637-454E-B4BD-5CA1DF31E543&content_type=\(type)&count=30&message_cursor=0&min_time=\(time)&mpic=1"
         }else{
-            urlString = "http://lf.snssdk.com/neihan/stream/mix/v1/?content_type=\(type)&iid=11612214903&idfa=99F096BA-477A-4D0A-AB26-69B76DDB85C6&version_code=5.8.0&device_type=iPhone%205%20(Global)&live_sdk_version=130&os_version=8.4&screen_width=640&aid=7&vid=D5CDF3B6-1637-454E-B4BD-5CA1DF31E543&device_id=4598024398&os_api=18&app_name=joke_essay&device_platform=iphone&ac=WIFI&openudid=7881ad6e7d291af91681a760a49f1202e5954292&channel=App%20Store&city=%E5%8C%97%E4%BA%AC%E5%B8%82&content_type=\(type)&count=30&essence=1&latitude=39.93562316915166&longitude=116.4325714110405&message_cursor=0&min_time=1501483384&mpic=1"
+            urlString = "http://lf.snssdk.com/neihan/stream/mix/v1/?content_type=\(type)&iid=11612214903&idfa=99F096BA-477A-4D0A-AB26-69B76DDB85C6&version_code=5.8.0&device_type=iPhone%205%20(Global)&live_sdk_version=130&os_version=8.4&screen_width=640&aid=7&vid=D5CDF3B6-1637-454E-B4BD-5CA1DF31E543&device_id=4598024398&os_api=18&app_name=joke_essay&device_platform=iphone&ac=WIFI&openudid=7881ad6e7d291af91681a760a49f1202e5954292&channel=App%20Store&city=%E5%8C%97%E4%BA%AC%E5%B8%82&content_type=\(type)&count=30&essence=1&latitude=39.93562316915166&longitude=116.4325714110405&message_cursor=0&min_time=\(time)&mpic=1"
         }
         print("加载的URL = \(urlString)")
         
@@ -56,11 +57,15 @@ class STViewModel: NSObject,PlayProtocol {
                 //
                 // type 1 正常展示  type 5 广告
                 let contentAndCommentArray = dataDict.data
+                // 创建临时数组
+                var tempArray : [STConnotationModelFrame] = [STConnotationModelFrame]()
                 for contentAndComment in contentAndCommentArray {
                     contentAndComment.type_id = type
                     let modelFrame = STConnotationModelFrame(contentAndComment)
-                    self.connotationModelFrameArray.append(modelFrame)
+                    tempArray.append(modelFrame)
+                    
                 }
+                self.connotationModelFrameArray = tempArray + self.connotationModelFrameArray
                 finishCallBack()
             }else{
                 //
@@ -70,7 +75,6 @@ class STViewModel: NSObject,PlayProtocol {
             
         }
     }
-    
     
     override init() {
         super.init()
