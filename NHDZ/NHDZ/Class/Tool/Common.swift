@@ -45,6 +45,7 @@ let screenSize = UIScreen.main.bounds.size
 let RowHei : CGFloat = CGFloat(screenSize.width) * 9.0 / 16.0
 let NavAndStatusTotalHei : CGFloat = 64.0
 let TabbarHei : CGFloat = 49.0
+let cellHeight : CGFloat = 44
 
 /// 内同文本行间距
 var lineSpace : CGFloat = 5
@@ -79,6 +80,8 @@ var CellVideoBreakH : CGFloat = sScreenW - 2 * margin
 
 var progressViewWH : CGFloat = 50
 
+var lineViewHeight : CGFloat = 1
+
 // MARK:- 发现
 /// 发现轮播高度
 var discoverRecommendCycleWH : CGFloat = 250
@@ -108,6 +111,9 @@ let TimeActionNotification = "TimeActionNotification"
 
 // MARK:- UserDefaults
 let STNSUserDefaults = UserDefaults.standard
+
+// MARK:- 颜色
+let lineViewColor = UIColor(red: 178.0 / 255.0, green: 178.0 / 255.0, blue: 178.0 / 255.0, alpha: 1.0)
 
 // MARK:- key
 let APPKEY = "4f5885cb5270150ce7000016"

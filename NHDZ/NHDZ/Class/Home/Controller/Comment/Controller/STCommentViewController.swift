@@ -16,10 +16,28 @@ class STCommentViewController: UIViewController {
 
     fileprivate lazy var commentVM : STCommentVM = STCommentVM()
     
-    var connotationModelFrame : STConnotationModelFrame?
-    var needMoveView : UIView?
-    var indexPath : IndexPath?
+    fileprivate lazy var needMoveView : STNeedMoveView = STNeedMoveView()
+    
+//    var connotationModelFrame : STConnotationModelFrame?
+//    var needMoveView : UIView?
+//    var indexPath : IndexPath?
     weak var delegate : STCommentViewControllerDelegate?
+    
+    var connotationModelFrame : STConnotationModelFrame?{
+        didSet{
+            guard let connotationModelFrame = connotationModelFrame else { return }
+            needMoveView.connotationModelFrame = connotationModelFrame
+            let needMoveViewHeight = connotationModelFrame.cellCommentHeight
+            let collectionTop = needMoveViewHeight
+//            needMoveView.frame.origin.y = -(needMoveViewHeight)
+            /// 保存needMoveViewFrame
+            needMoveView.frame = connotationModelFrame.videoCommentFrame
+//            collectionView.contentInset = UIEdgeInsets(top: collectionTop, left: 0, bottom: 0, right: 0)
+            
+            needMoveView.connotationModelFrame = connotationModelFrame
+            
+        }
+    }
     
     /// 记录滚动的临界点
     fileprivate var scrollowOffY : CGFloat = 0
@@ -63,13 +81,15 @@ class STCommentViewController: UIViewController {
         
     }()
     
-    fileprivate lazy var diggUsersView : UIView = {
+    /// 推荐用户
+    fileprivate lazy var diggUsersView : STDiggUsersView = {
        
-        let diggUsersView = UIView()
+        let diggUsersView = STDiggUsersView()
         diggUsersView.backgroundColor = UIColor.orange
         return diggUsersView
     }()
     
+    /// 广告
     fileprivate lazy var adView : STADView = {
         
         let adView = STADView()
@@ -78,27 +98,12 @@ class STCommentViewController: UIViewController {
         return adView
     }()
     
+    // MARK:- 生命周期
     override func viewDidLoad() {
-        
-       
         view.addSubview(collectionView)
         collectionView.addSubview(diggUsersView)
         collectionView.addSubview(adView)
-        collectionView.addSubview(needMoveView!)
-        
-        
-        guard let needMoveView = needMoveView else { return }
-//        print(needMoveView.frame)
-        needMoveView.backgroundColor = UIColor.blue
-        let needMoveViewHeight = needMoveView.frame.height
-        let collectionTop = needMoveViewHeight
-        needMoveView.frame.origin.y = -(needMoveViewHeight)
-        /// 保存needMoveViewFrame
-        needMoveViewOriginalFrame = CGRect(origin: CGPoint(x: needMoveView.frame.origin.x, y: needMoveView.frame.origin.y), size: needMoveView.frame.size)
-        collectionView.contentInset = UIEdgeInsets(top: collectionTop, left: 0, bottom: 0, right: 0)
-
-        
-        
+        collectionView.addSubview(needMoveView)
         super.viewDidLoad()
         
         automaticallyAdjustsScrollViewInsets = false
@@ -112,8 +117,7 @@ class STCommentViewController: UIViewController {
         
         navigationItem.leftBarButtonItem = back
 
-        
-        setupData()
+//        setupData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -123,10 +127,9 @@ class STCommentViewController: UIViewController {
     }
     
     func back(){
-        guard let needMoveView = needMoveView else { return }
 //        needMoveView.frame = needMoveViewOriginalFrame
         resetAnimation()
-        delegate?.backAction(self, needMoveView,indexPath!)
+//        delegate?.backAction(self, needMoveView,indexPath!)
         
         navigationController?.popViewController(animated: true)
     }
@@ -156,8 +159,11 @@ extension STCommentViewController {
             }
             self.adView.frame = CGRect(x: 0, y: -adViewHeight, width: sScreenW, height: adViewHeight)
             
+            // 3 设置needView
+            collectionViewTop = collectionViewTop + self.needMoveView.frame.maxY
+            self.needMoveView.frame.origin.y = -collectionViewTop - 64
             
-            // 2 赞 踩 评论 分享条
+            // 2 分享用户
             var diggViewHeight : CGFloat = 0
             if let diggUsersModelFrame = self.commentVM.diggUsersModelFrame {
                 //            diggTop = needMoveView.frame.maxY
@@ -169,24 +175,22 @@ extension STCommentViewController {
                 diggViewHeight = 0
                 
             }
+            if let users = self.commentVM.diggUsersModelFrame?.commentDiggUsersModel.data?.users{
+                self.diggUsersView.usersModel = users
+            }
+            self.diggUsersView.frame = CGRect(x: 0, y: self.needMoveView.frame.height - 64, width: sScreenW, height: diggViewHeight)
             
-            self.diggUsersView.frame = CGRect(x: 0, y: -collectionViewTop, width: sScreenW, height: diggViewHeight)
             
-             // 3 设置needView
-            
-            collectionViewTop = collectionViewTop + self.needMoveView!.frame.height
-            self.needMoveView?.frame.origin.y = -collectionViewTop
             
             // 4 评论 (热门,新鲜)
-            
-            self.collectionView.contentInset = UIEdgeInsets(top: collectionViewTop, left: 0, bottom: 0, right: 0)
+            self.collectionView.contentInset = UIEdgeInsets(top: collectionViewTop + 64, left: 0, bottom: 0, right: 0)
             
 //            print(self.collectionView.contentOffset.y)
-            self.collectionView.contentOffset.y = -collectionViewTop
+//            self.collectionView.contentOffset.y = -collectionViewTop
 
             // 5 记录临界点
             self.scrollowOffY = -(self.diggUsersView.frame.height + self.adView.frame.height)
-            self.needMoveViewOriginalFrame = CGRect(origin: CGPoint(x: self.needMoveView!.frame.origin.x, y: self.collectionView.contentOffset.y), size: self.needMoveView!.frame.size)
+            self.needMoveViewOriginalFrame = CGRect(origin: CGPoint(x: self.needMoveView.frame.origin.x, y: self.collectionView.contentOffset.y), size: self.needMoveView.frame.size)
         }) { (message) in
             print("message = \(message)")
         }
@@ -263,7 +267,6 @@ extension STCommentViewController : UICollectionViewDelegateFlowLayout {
 extension STCommentViewController {
     
     fileprivate func scaleAnimation(){
-        guard let needMoveView = needMoveView else { return }
         view.addSubview(needMoveView)
         let scale : CGFloat = 0.3
         let scaleWidth = needMoveView.frame.width * scale
@@ -274,9 +277,9 @@ extension STCommentViewController {
         
         needMoveView.transform = CGAffineTransform(scaleX: 1, y: 1)
         UIView.animate(withDuration: transitionDuration, delay: 0, options: .allowAnimatedContent, animations: {
-            needMoveView.transform = CGAffineTransform(scaleX: scale, y: scale)
-            needMoveView.frame.origin.x = scaleX
-            needMoveView.frame.origin.y = 64
+            self.needMoveView.transform = CGAffineTransform(scaleX: scale, y: scale)
+            self.needMoveView.frame.origin.x = scaleX
+            self.needMoveView.frame.origin.y = 64
 //            needMoveView.frame = CGRect(x: scaleX, y: scaleY, width: scaleWidth, height: scaleHeight)
         }) { (isFinish) in
             
@@ -289,7 +292,6 @@ extension STCommentViewController {
     }
     
     fileprivate func resetAnimation(){
-        guard let needMoveView = needMoveView else { return }
         collectionView.addSubview(needMoveView)
 
         

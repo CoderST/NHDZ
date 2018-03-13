@@ -56,11 +56,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
     
     func setupMainWindow() {
-        
+        // 1.创建窗口
         window = UIWindow(frame: UIScreen.main.bounds)
-        let tabBarController = MainTabBarController()
-        window?.rootViewController = tabBarController
-        window?.makeKeyAndVisible()
+        
+        // 2.设置根控制器
+        let account = DZAccount.account()
+//        if account != nil{
+            let tabBarController = MainTabBarController()
+            window?.rootViewController = tabBarController
+            window?.makeKeyAndVisible()
+//        }else{
+            // 进入登录界面
+//        }
+        
+        
     }
 }
 

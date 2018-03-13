@@ -12,11 +12,25 @@ class STLiveAnchoViewController: UIViewController {
     
     fileprivate var currentIndex : Int = 0
     fileprivate var anchorFramelist : [STAnchorModelFrame] = [STAnchorModelFrame]()
-    
+    fileprivate lazy var dismissButton : UIButton = {
+       
+        let button = UIButton(type: .contactAdd)
+        
+        return button
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = .white
+        view.addSubview(dismissButton)
+        dismissButton.frame = CGRect(x: 100, y: 100, width: 100, height: 100)
+        dismissButton.addTarget(self, action: #selector(dismissButtonAction), for: .touchUpInside)
         // Do any additional setup after loading the view.
+    }
+    
+    func dismissButtonAction(){
+        
+        dismiss(animated: true, completion: nil)
     }
 }
 

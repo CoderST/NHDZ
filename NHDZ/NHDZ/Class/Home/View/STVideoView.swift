@@ -20,6 +20,7 @@ class STVideoView: UIView {
     fileprivate lazy var burImageView : UIImageView = {
         
         let burImageView = UIImageView()
+        burImageView.contentMode = .scaleAspectFit
         return burImageView
     }()
     
@@ -96,7 +97,7 @@ class STVideoView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        backgroundColor = .black
         // 添加子空间
         addSubViews()
         
@@ -188,7 +189,7 @@ extension STVideoView {
                 let config = STConfiguration()
                 config.isCache = false
                 config.palyView = self
-                config.playerLayerF = connotationModelFrame.videoFrame
+                config.playerLayerF = connotationModelFrame.videoPlayFrame
                 STPlayerManageAPI.playWithURL(url, config)
                 insertSubview(burImageView, at: 0)
                 
@@ -294,20 +295,21 @@ extension STVideoView {
 extension STVideoView {
     
     fileprivate func setupBurImage(_ connotationModelFrame : STConnotationModelFrame){
-        burImageView.frame = CGRect(x: 0, y: 0, width: sScreenW, height: connotationModelFrame.videoFrame.height)
+//        burImageView.frame = CGRect(x: 0, y: 0, width: sScreenW, height: connotationModelFrame.videoFrame.height)
+        burImageView.frame = connotationModelFrame.videoPlayFrame
         setupToolBarSubViewFrame(connotationModelFrame)
         
         
         let videoPlaceHoldString = connotationModelFrame.videoPlaceHoldString
         let url = URL(string: videoPlaceHoldString)
-        let image = UIImage(named: "")
+//        let image = UIImage(named: "")
         burImageView.kf.setImage(with: url, placeholder: UIImage(named: "timeline_image_placeholder"), options: nil, progressBlock: { (receivedSize, expectedSize) in
             
         }) { (image, error, cacheType, imageUrl) in
             if image != nil{
                 
-                let burImage = UIImage.boxBlurImage(image!, withBlurNumber: 0.5)
-                self.burImageView.image = burImage
+//                let burImage = UIImage.boxBlurImage(image!, withBlurNumber: 0.5)
+                self.burImageView.image = image
             }
 
         }

@@ -52,8 +52,16 @@ class STConnotationModelFrame: NSObject {
     var imageFrame : CGRect = .zero
     /// gif图片
     var gifFrame : CGRect = .zero
-    /// 视频
+    /// 视频播放层
+    var videoPlayFrame : CGRect = .zero
+    /// 视频底层
     var videoFrame : CGRect = .zero
+    /// ******评论里视频的尺寸******
+    var videoCommentFrame : CGRect = .zero
+    var videoCommentPlayFrame : CGRect = .zero
+    var cellCommentHeight : CGFloat = 0
+    var bottomTabbarCommentViewFrame : CGRect = .zero
+    /// ************
     /// 多图View
     var thumbImageListFrame : CGRect = .zero
     /// 底部tabbar
@@ -65,6 +73,7 @@ class STConnotationModelFrame: NSObject {
     var deleButtonFrame : CGRect = .zero
     /// cell高度
     var cellHeight : CGFloat = 0
+    
     
     init(_ contentAndComment : ContentAndComment) {
         self.contentAndComment = contentAndComment
@@ -99,14 +108,17 @@ class STConnotationModelFrame: NSObject {
             case Media_type.Words.rawValue:
                 
                 WordsAction(content)
+                setBottomFrame()
                 
             case Media_type.Picture_Words.rawValue:
                 
                 PictureWordsAction(content)
+                setBottomFrame()
                 
             case Media_type.GIF_Words.rawValue:
                 
                 GIFWordsAction(content)
+                setBottomFrame()
                 
             case Media_type.Video_Words.rawValue:
                 
@@ -115,14 +127,15 @@ class STConnotationModelFrame: NSObject {
             case Media_type.MorePicture_Words.rawValue:
                 
                 MorePictureWordsAction(content)
+                setBottomFrame()
                 
             default:
                 print("ppppppppp-不知道的子类型")
             }
             
-            bottomTabbarViewFrame = CGRect(x: 0, y: cellHeight, width: sScreenW, height: bottomTabbarViewHeight)
-            cellHeight = bottomTabbarViewFrame.maxY
-            needMoveViewHeight = cellHeight
+//            bottomTabbarViewFrame = CGRect(x: 0, y: cellHeight, width: sScreenW, height: bottomTabbarViewHeight)
+//            cellHeight = bottomTabbarViewFrame.maxY
+//            needMoveViewHeight = cellHeight
 
 
         }else if type == ShowAD_NormalType.AD.rawValue{  // 广告
@@ -147,6 +160,13 @@ class STConnotationModelFrame: NSObject {
         deleButtonFrame = CGRect(x: sScreenW - deleButtonWH, y: 0, width: deleButtonWH, height: deleButtonWH)
         
 //        print("cellHeightmmmmmm = \(cellHeight)")
+    }
+    
+    func setBottomFrame() {
+        bottomTabbarViewFrame = CGRect(x: 0, y: cellHeight, width: sScreenW, height: bottomTabbarViewHeight)
+        cellHeight = bottomTabbarViewFrame.maxY
+        needMoveViewHeight = cellHeight
+
     }
 }
 
@@ -236,22 +256,33 @@ extension STConnotationModelFrame {
         }
         videoString = content.mp4_url
         videoPlayTime = Int(content.duration)
-        var x : CGFloat = 0
-        var resultWidth = sScreenW
+        let x : CGFloat = margin
+        let resultWidth = sScreenW - 2 * x
         var resultHeight : CGFloat = 0
-        let videoHieght = CGFloat(content.video_height)
+        let videoHieght = CGFloat(content.video_height) * 0.5
+        resultHeight = videoHieght
+        videoFrame = CGRect(x: x, y: cellHeight, width: resultWidth, height: resultHeight)
         
-        let height = videoHieght * resultWidth / CGFloat(content.video_width)
-        resultHeight = height
-        if height > CellVideoMaxH {
-            resultHeight = CellVideoBreakH
-            
-            resultWidth = sScreenW
+        /**以下是评论里用的数据**/
+        let height = videoHieght * resultWidth / (CGFloat(content.video_width) * 0.5)
+        videoCommentFrame = CGRect(x: x, y: cellHeight, width: resultWidth, height: height)
+        videoCommentPlayFrame = CGRect(x: x, y: 0, width: resultWidth, height: height)
+        bottomTabbarCommentViewFrame = CGRect(x: 0, y: videoCommentFrame.maxY, width: sScreenW, height: bottomTabbarViewHeight)
+        cellCommentHeight = bottomTabbarCommentViewFrame.maxY + margin
+        needMoveViewHeight = cellCommentHeight
+        /*****/
+        
+        
+        var playWidth : CGFloat = CGFloat(content.video_width) * 0.5
+        if playWidth > resultWidth{
+            playWidth = resultWidth
         }
-        
-        videoFrame = CGRect(x: 0, y: cellHeight, width: resultWidth, height: resultHeight)
+        videoPlayFrame = CGRect(x: (resultWidth - playWidth) * 0.5, y: 0, width: playWidth, height: resultHeight)
         cellHeight = videoFrame.maxY + margin
-    }
+         bottomTabbarViewFrame = CGRect(x: 0, y: cellHeight, width: sScreenW, height: bottomTabbarViewHeight)
+         cellHeight = bottomTabbarViewFrame.maxY
+        
+            }
     
     fileprivate func MorePictureWordsAction(_ content : Content) {
         WordsAction(content)

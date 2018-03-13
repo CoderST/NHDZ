@@ -180,10 +180,10 @@ extension STViewModel : UICollectionViewDelegateFlowLayout {
         /// 获取 cell中的videoView
         guard let cell = collectionView.cellForItem(at: indexPath) as? STCell else { return }
         
-        let needMoveView = cell.needMoveView
+//        let needMoveView = cell.connotationModelFrame
         commentVC.connotationModelFrame = connotationModelFrame
-        commentVC.needMoveView = needMoveView
-        commentVC.indexPath = indexPath
+//        commentVC.needMoveView = needMoveView
+//        commentVC.indexPath = indexPath
         
         let nav = getNavigation()
         nav.pushViewController(commentVC, animated: true)

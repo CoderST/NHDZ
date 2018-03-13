@@ -257,8 +257,7 @@ extension STPlayer {
             playerLayer.videoGravity = AVLayerVideoGravityResizeAspect
             
             // 3 设置播放页面大小
-            let rect  = configuration.playerLayerF
-            playerLayer.frame = playView.bounds
+            playerLayer.frame = configuration.playerLayerF
             print("playerLayer.bounds = ",playerLayer.frame)
             // 4 playerLayer添加到显示图层
             

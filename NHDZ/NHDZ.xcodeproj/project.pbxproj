@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F7A97A4205621A80048D86B /* STDiggUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7A97A3205621A80048D86B /* STDiggUsersView.swift */; };
+		0F7A97B0205622480048D86B /* STCommentADModelFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7A97A8205622480048D86B /* STCommentADModelFrame.swift */; };
+		0F7A97B1205622480048D86B /* STCommentDiggUsersModelFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7A97A9205622480048D86B /* STCommentDiggUsersModelFrame.swift */; };
+		0F7A97B2205622480048D86B /* STCommentModelFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7A97AA205622480048D86B /* STCommentModelFrame.swift */; };
+		0F7A97B3205622480048D86B /* STCommentADModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7A97AB205622480048D86B /* STCommentADModel.swift */; };
+		0F7A97B4205622480048D86B /* STCommentBigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7A97AC205622480048D86B /* STCommentBigModel.swift */; };
+		0F7A97B5205622480048D86B /* STCommentDiggUsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7A97AD205622480048D86B /* STCommentDiggUsersModel.swift */; };
+		0F7A97B6205622480048D86B /* STCommentGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7A97AE205622480048D86B /* STCommentGroup.swift */; };
+		0F7A97B7205622480048D86B /* STCommentUserInforModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7A97AF205622480048D86B /* STCommentUserInforModel.swift */; };
+		0F7A97BA20564CC40048D86B /* STUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7A97B920564CC40048D86B /* STUserModel.swift */; };
+		0F7A97BC20565C120048D86B /* STNeedMoveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7A97BB20565C120048D86B /* STNeedMoveView.swift */; };
 		0F86940A1F370CC800315064 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8694091F370CC700315064 /* MainNavigationController.swift */; };
 		0F8694191F370FAD00315064 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F86940B1F370FAD00315064 /* BaseModel.swift */; };
 		0F86941A1F370FAD00315064 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F86940C1F370FAD00315064 /* Date+Extension.swift */; };
@@ -39,14 +50,6 @@
 		0F8694591F3710E900315064 /* STTitlesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8694561F3710E900315064 /* STTitlesViewModel.swift */; };
 		0F86945A1F3710E900315064 /* STCommentVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8694571F3710E900315064 /* STCommentVM.swift */; };
 		0F86946F1F37111E00315064 /* STCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F86945D1F37111E00315064 /* STCommentViewController.swift */; };
-		0F8694701F37111E00315064 /* STCommentADModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F86945F1F37111E00315064 /* STCommentADModel.swift */; };
-		0F8694711F37111E00315064 /* STCommentADModelFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8694601F37111E00315064 /* STCommentADModelFrame.swift */; };
-		0F8694721F37111E00315064 /* STCommentBigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8694611F37111E00315064 /* STCommentBigModel.swift */; };
-		0F8694731F37111E00315064 /* STCommentDiggUsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8694621F37111E00315064 /* STCommentDiggUsersModel.swift */; };
-		0F8694741F37111E00315064 /* STCommentDiggUsersModelFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8694631F37111E00315064 /* STCommentDiggUsersModelFrame.swift */; };
-		0F8694751F37111E00315064 /* STCommentGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8694641F37111E00315064 /* STCommentGroup.swift */; };
-		0F8694761F37111E00315064 /* STCommentModelFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8694651F37111E00315064 /* STCommentModelFrame.swift */; };
-		0F8694771F37111E00315064 /* STCommentUserInforModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8694661F37111E00315064 /* STCommentUserInforModel.swift */; };
 		0F8694781F37111E00315064 /* STADView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8694681F37111E00315064 /* STADView.swift */; };
 		0F8694791F37111E00315064 /* STCommentADView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8694691F37111E00315064 /* STCommentADView.swift */; };
 		0F86947A1F37111E00315064 /* STCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F86946A1F37111E00315064 /* STCommentCell.swift */; };
@@ -75,6 +78,15 @@
 		0F8694A71F3731D300315064 /* STPageViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F86949F1F3731D300315064 /* STPageViewStyle.swift */; };
 		0F8694A81F3731D300315064 /* STTitlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8694A01F3731D300315064 /* STTitlesView.swift */; };
 		0F8694A91F3731D300315064 /* UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8694A11F3731D300315064 /* UIColor-Extension.swift */; };
+		0F8BBD13205797FA003D94E6 /* STMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8BBD12205797FA003D94E6 /* STMessageModel.swift */; };
+		0F8BBD1520579FA8003D94E6 /* STMessageVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8BBD1420579FA8003D94E6 /* STMessageVCCell.swift */; };
+		0F8BBD172057A987003D94E6 /* STRegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8BBD162057A987003D94E6 /* STRegisterVC.swift */; };
+		0F8BBD192057B346003D94E6 /* DZAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8BBD182057B346003D94E6 /* DZAccount.swift */; };
+		0F8BBD1B2057B3AE003D94E6 /* DZAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8BBD1A2057B3AE003D94E6 /* DZAccountModel.swift */; };
+		0F8BBD1D2057BE9C003D94E6 /* STRegisterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8BBD1C2057BE9C003D94E6 /* STRegisterCell.swift */; };
+		0F8BBD1F2057BFA2003D94E6 /* STInteractionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8BBD1E2057BFA2003D94E6 /* STInteractionVC.swift */; };
+		0F8BBD212057C050003D94E6 /* STSystemMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8BBD202057C050003D94E6 /* STSystemMessageVC.swift */; };
+		0F8BBD232057C072003D94E6 /* STFansVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8BBD222057C072003D94E6 /* STFansVC.swift */; };
 		0F92D42A1F4416A2007DB132 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F92D4291F4416A2007DB132 /* IJKMediaFramework.framework */; };
 		0F92D42C1F4416D4007DB132 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F92D42B1F4416D4007DB132 /* AudioToolbox.framework */; };
 		0F92D42E1F4416DC007DB132 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F92D42D1F4416DC007DB132 /* AVFoundation.framework */; };
@@ -122,6 +134,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F7A97A3205621A80048D86B /* STDiggUsersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STDiggUsersView.swift; sourceTree = "<group>"; };
+		0F7A97A8205622480048D86B /* STCommentADModelFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STCommentADModelFrame.swift; sourceTree = "<group>"; };
+		0F7A97A9205622480048D86B /* STCommentDiggUsersModelFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STCommentDiggUsersModelFrame.swift; sourceTree = "<group>"; };
+		0F7A97AA205622480048D86B /* STCommentModelFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STCommentModelFrame.swift; sourceTree = "<group>"; };
+		0F7A97AB205622480048D86B /* STCommentADModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STCommentADModel.swift; sourceTree = "<group>"; };
+		0F7A97AC205622480048D86B /* STCommentBigModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STCommentBigModel.swift; sourceTree = "<group>"; };
+		0F7A97AD205622480048D86B /* STCommentDiggUsersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STCommentDiggUsersModel.swift; sourceTree = "<group>"; };
+		0F7A97AE205622480048D86B /* STCommentGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STCommentGroup.swift; sourceTree = "<group>"; };
+		0F7A97AF205622480048D86B /* STCommentUserInforModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STCommentUserInforModel.swift; sourceTree = "<group>"; };
+		0F7A97B920564CC40048D86B /* STUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STUserModel.swift; sourceTree = "<group>"; };
+		0F7A97BB20565C120048D86B /* STNeedMoveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STNeedMoveView.swift; sourceTree = "<group>"; };
 		0F8694091F370CC700315064 /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		0F86940B1F370FAD00315064 /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		0F86940C1F370FAD00315064 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
@@ -155,14 +178,6 @@
 		0F8694561F3710E900315064 /* STTitlesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STTitlesViewModel.swift; sourceTree = "<group>"; };
 		0F8694571F3710E900315064 /* STCommentVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STCommentVM.swift; sourceTree = "<group>"; };
 		0F86945D1F37111E00315064 /* STCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STCommentViewController.swift; sourceTree = "<group>"; };
-		0F86945F1F37111E00315064 /* STCommentADModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STCommentADModel.swift; sourceTree = "<group>"; };
-		0F8694601F37111E00315064 /* STCommentADModelFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STCommentADModelFrame.swift; sourceTree = "<group>"; };
-		0F8694611F37111E00315064 /* STCommentBigModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STCommentBigModel.swift; sourceTree = "<group>"; };
-		0F8694621F37111E00315064 /* STCommentDiggUsersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STCommentDiggUsersModel.swift; sourceTree = "<group>"; };
-		0F8694631F37111E00315064 /* STCommentDiggUsersModelFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STCommentDiggUsersModelFrame.swift; sourceTree = "<group>"; };
-		0F8694641F37111E00315064 /* STCommentGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STCommentGroup.swift; sourceTree = "<group>"; };
-		0F8694651F37111E00315064 /* STCommentModelFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STCommentModelFrame.swift; sourceTree = "<group>"; };
-		0F8694661F37111E00315064 /* STCommentUserInforModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STCommentUserInforModel.swift; sourceTree = "<group>"; };
 		0F8694681F37111E00315064 /* STADView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STADView.swift; sourceTree = "<group>"; };
 		0F8694691F37111E00315064 /* STCommentADView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STCommentADView.swift; sourceTree = "<group>"; };
 		0F86946A1F37111E00315064 /* STCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STCommentCell.swift; sourceTree = "<group>"; };
@@ -191,6 +206,15 @@
 		0F86949F1F3731D300315064 /* STPageViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STPageViewStyle.swift; sourceTree = "<group>"; };
 		0F8694A01F3731D300315064 /* STTitlesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STTitlesView.swift; sourceTree = "<group>"; };
 		0F8694A11F3731D300315064 /* UIColor-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor-Extension.swift"; sourceTree = "<group>"; };
+		0F8BBD12205797FA003D94E6 /* STMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STMessageModel.swift; sourceTree = "<group>"; };
+		0F8BBD1420579FA8003D94E6 /* STMessageVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STMessageVCCell.swift; sourceTree = "<group>"; };
+		0F8BBD162057A987003D94E6 /* STRegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STRegisterVC.swift; sourceTree = "<group>"; };
+		0F8BBD182057B346003D94E6 /* DZAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DZAccount.swift; sourceTree = "<group>"; };
+		0F8BBD1A2057B3AE003D94E6 /* DZAccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DZAccountModel.swift; sourceTree = "<group>"; };
+		0F8BBD1C2057BE9C003D94E6 /* STRegisterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STRegisterCell.swift; sourceTree = "<group>"; };
+		0F8BBD1E2057BFA2003D94E6 /* STInteractionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STInteractionVC.swift; sourceTree = "<group>"; };
+		0F8BBD202057C050003D94E6 /* STSystemMessageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STSystemMessageVC.swift; sourceTree = "<group>"; };
+		0F8BBD222057C072003D94E6 /* STFansVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STFansVC.swift; sourceTree = "<group>"; };
 		0F92D4291F4416A2007DB132 /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IJKMediaFramework.framework; sourceTree = "<group>"; };
 		0F92D42B1F4416D4007DB132 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0F92D42D1F4416DC007DB132 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -264,6 +288,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F7A97A5205622000048D86B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0F7A97A6205622480048D86B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0F7A97A7205622480048D86B /* Frame */,
+				0F7A97AB205622480048D86B /* STCommentADModel.swift */,
+				0F7A97AC205622480048D86B /* STCommentBigModel.swift */,
+				0F7A97AD205622480048D86B /* STCommentDiggUsersModel.swift */,
+				0F7A97AE205622480048D86B /* STCommentGroup.swift */,
+				0F7A97AF205622480048D86B /* STCommentUserInforModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0F7A97A7205622480048D86B /* Frame */ = {
+			isa = PBXGroup;
+			children = (
+				0F7A97A8205622480048D86B /* STCommentADModelFrame.swift */,
+				0F7A97A9205622480048D86B /* STCommentDiggUsersModelFrame.swift */,
+				0F7A97AA205622480048D86B /* STCommentModelFrame.swift */,
+			);
+			path = Frame;
+			sourceTree = "<group>";
+		};
 		0F86940F1F370FAD00315064 /* PopModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,8 +345,9 @@
 		0F86945B1F37111E00315064 /* Comment */ = {
 			isa = PBXGroup;
 			children = (
+				0F7A97A6205622480048D86B /* Model */,
+				0F7A97A5205622000048D86B /* ViewModel */,
 				0F86945C1F37111E00315064 /* Controller */,
-				0F86945E1F37111E00315064 /* Model */,
 				0F8694671F37111E00315064 /* View */,
 			);
 			path = Comment;
@@ -306,21 +361,6 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		0F86945E1F37111E00315064 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				0F86945F1F37111E00315064 /* STCommentADModel.swift */,
-				0F8694601F37111E00315064 /* STCommentADModelFrame.swift */,
-				0F8694611F37111E00315064 /* STCommentBigModel.swift */,
-				0F8694621F37111E00315064 /* STCommentDiggUsersModel.swift */,
-				0F8694631F37111E00315064 /* STCommentDiggUsersModelFrame.swift */,
-				0F8694641F37111E00315064 /* STCommentGroup.swift */,
-				0F8694651F37111E00315064 /* STCommentModelFrame.swift */,
-				0F8694661F37111E00315064 /* STCommentUserInforModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		0F8694671F37111E00315064 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +368,8 @@
 				0F8694691F37111E00315064 /* STCommentADView.swift */,
 				0F86946A1F37111E00315064 /* STCommentCell.swift */,
 				0F86946B1F37111E00315064 /* STCommentReusableView.swift */,
+				0F7A97A3205621A80048D86B /* STDiggUsersView.swift */,
+				0F7A97BB20565C120048D86B /* STNeedMoveView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -538,6 +580,7 @@
 				0FBAB9D21F38336F00C5BA82 /* STCategoryMainModel.swift */,
 				0F92D4411F4425FA007DB132 /* STAnchorMainModel.swift */,
 				0F92D4451F443233007DB132 /* STAnchorModelFrame.swift */,
+				0F7A97B920564CC40048D86B /* STUserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -595,6 +638,7 @@
 				0F8694971F37124600315064 /* STBaseViewController.swift */,
 				0F8694091F370CC700315064 /* MainNavigationController.swift */,
 				0FCA40F81F009DE8007D773B /* MainTabBarController.swift */,
+				0F8BBD162057A987003D94E6 /* STRegisterVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -604,6 +648,7 @@
 			children = (
 				0FF5E6001F78DCBA00CEEBC4 /* STTimeModel.swift */,
 				0FF5E6021F78ECB800CEEBC4 /* STTimeManage.swift */,
+				0F8BBD1A2057B3AE003D94E6 /* DZAccountModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -611,6 +656,7 @@
 		0FCA40ED1F009D07007D773B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0F8BBD1C2057BE9C003D94E6 /* STRegisterCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -637,6 +683,9 @@
 			isa = PBXGroup;
 			children = (
 				0FCA41081F00A6F8007D773B /* MessageViewController.swift */,
+				0F8BBD1E2057BFA2003D94E6 /* STInteractionVC.swift */,
+				0F8BBD202057C050003D94E6 /* STSystemMessageVC.swift */,
+				0F8BBD222057C072003D94E6 /* STFansVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -644,6 +693,7 @@
 		0FCA40F11F009D07007D773B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0F8BBD12205797FA003D94E6 /* STMessageModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -651,6 +701,7 @@
 		0FCA40F21F009D07007D773B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0F8BBD1420579FA8003D94E6 /* STMessageVCCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -668,6 +719,7 @@
 				0F92D4271F4416A2007DB132 /* ijkplayerLib */,
 				0FE148D21F42CEAD00FAFAB1 /* DIY */,
 				0FCA41001F00A387007D773B /* Common.swift */,
+				0F8BBD182057B346003D94E6 /* DZAccount.swift */,
 				0FC44E751F394D4C001779BF /* STRecommendCycleView.swift */,
 				0FC44E771F394E45001779BF /* STRecommendCycleCell.swift */,
 				0F86940B1F370FAD00315064 /* BaseModel.swift */,
@@ -945,7 +997,6 @@
 				0F8694521F3710D800315064 /* STModel.swift in Sources */,
 				0F86941C1F370FAD00315064 /* NetworkTools.swift in Sources */,
 				0F8694781F37111E00315064 /* STADView.swift in Sources */,
-				0F8694731F37111E00315064 /* STCommentDiggUsersModel.swift in Sources */,
 				0F8694A41F3731D300315064 /* STContentView.swift in Sources */,
 				0F8694191F370FAD00315064 /* BaseModel.swift in Sources */,
 				0FC44E7A1F3954AD001779BF /* STDiscoverCell.swift in Sources */,
@@ -960,7 +1011,6 @@
 				0F86948E1F37113600315064 /* STCustomButton.swift in Sources */,
 				0F92D44A1F443BDD007DB132 /* STLiveAnchoViewController.swift in Sources */,
 				0F86948F1F37113600315064 /* STDislikeBottomView.swift in Sources */,
-				0F8694701F37111E00315064 /* STCommentADModel.swift in Sources */,
 				0FCA40FF1F00A1FC007D773B /* STTabbar.swift in Sources */,
 				0F92D4401F442467007DB132 /* STAnchorViewModel.swift in Sources */,
 				0F86947C1F37111E00315064 /* STHomeSubViewController.swift in Sources */,
@@ -968,12 +1018,13 @@
 				0F8694911F37113600315064 /* STDislikeReasonView.swift in Sources */,
 				0FCA41071F00A6D3007D773B /* FreshViewController.swift in Sources */,
 				0FBAB9CD1F37F2DC00C5BA82 /* TestViewController.swift in Sources */,
+				0F8BBD1F2057BFA2003D94E6 /* STInteractionVC.swift in Sources */,
 				0F8694241F370FAD00315064 /* XDPlanFlowLayout.swift in Sources */,
 				0F8694A21F3731D300315064 /* HYPageCollectionView.swift in Sources */,
+				0F7A97B5205622480048D86B /* STCommentDiggUsersModel.swift in Sources */,
 				0F86941A1F370FAD00315064 /* Date+Extension.swift in Sources */,
-				0F8694751F37111E00315064 /* STCommentGroup.swift in Sources */,
+				0F8BBD192057B346003D94E6 /* DZAccount.swift in Sources */,
 				0F8694481F37109D00315064 /* STPlayProtocol.swift in Sources */,
-				0F8694711F37111E00315064 /* STCommentADModelFrame.swift in Sources */,
 				0F8694A51F3731D300315064 /* STPageCollectionView.swift in Sources */,
 				0F86941E1F370FAD00315064 /* STPresentationController.swift in Sources */,
 				0F8694221F370FAD00315064 /* UIImage+Extension.swift in Sources */,
@@ -981,17 +1032,21 @@
 				0F86947B1F37111E00315064 /* STCommentReusableView.swift in Sources */,
 				0F8694321F370FEC00315064 /* STPlayerManage.swift in Sources */,
 				0F8694351F370FEC00315064 /* URL+Extension.swift in Sources */,
+				0F7A97B6205622480048D86B /* STCommentGroup.swift in Sources */,
 				0F86941D1F370FAD00315064 /* PresentModel.swift in Sources */,
 				0FF5E5FF1F78D79B00CEEBC4 /* STBaseVM.swift in Sources */,
+				0F8BBD212057C050003D94E6 /* STSystemMessageVC.swift in Sources */,
 				0F8694791F37111E00315064 /* STCommentADView.swift in Sources */,
 				0F86941B1F370FAD00315064 /* LinearCollectionViewLayout.swift in Sources */,
+				0F7A97B4205622480048D86B /* STCommentBigModel.swift in Sources */,
 				0F8694A71F3731D300315064 /* STPageViewStyle.swift in Sources */,
-				0F8694721F37111E00315064 /* STCommentBigModel.swift in Sources */,
 				0FCA41091F00A6F8007D773B /* MessageViewController.swift in Sources */,
+				0F8BBD232057C072003D94E6 /* STFansVC.swift in Sources */,
 				0FCA41161F00DE55007D773B /* AdVertModel.swift in Sources */,
 				0F8694901F37113600315064 /* STDislikeContainerView.swift in Sources */,
 				0FBAB9D31F38336F00C5BA82 /* STCategoryMainModel.swift in Sources */,
 				0F8694311F370FEC00315064 /* STPlayer.swift in Sources */,
+				0F8BBD1B2057B3AE003D94E6 /* DZAccountModel.swift in Sources */,
 				0F8694301F370FEC00315064 /* STFileManager.swift in Sources */,
 				0F8694A31F3731D300315064 /* STContentFlowLayout.swift in Sources */,
 				0FCA40FD1F00A15E007D773B /* STTabbarButton.swift in Sources */,
@@ -1000,37 +1055,46 @@
 				0F86948B1F37113600315064 /* STBottomToolBarView.swift in Sources */,
 				0FBAB9D91F386BAF00C5BA82 /* STDiscoverFrame.swift in Sources */,
 				0FCA41011F00A387007D773B /* Common.swift in Sources */,
+				0F7A97B7205622480048D86B /* STCommentUserInforModel.swift in Sources */,
+				0F7A97B3205622480048D86B /* STCommentADModel.swift in Sources */,
 				0FCA41051F00A6BC007D773B /* STDiscoverViewController.swift in Sources */,
 				0FE148D41F42CEEB00FAFAB1 /* STRefreshGifHeader.swift in Sources */,
 				0FBAB9D51F385E5600C5BA82 /* STDiscoverVM.swift in Sources */,
 				0F86944F1F3710D800315064 /* STConnotationModel.swift in Sources */,
 				0F8694951F37113600315064 /* STProgressView.swift in Sources */,
-				0F8694741F37111E00315064 /* STCommentDiggUsersModelFrame.swift in Sources */,
 				0F8694A81F3731D300315064 /* STTitlesView.swift in Sources */,
 				0F86942E1F370FEC00315064 /* STConfiguration.swift in Sources */,
 				0F8694231F370FAD00315064 /* UIImageView+Extension.swift in Sources */,
 				0FBAB9CF1F3830F400C5BA82 /* STCategoryViewController.swift in Sources */,
 				0F8694211F370FAD00315064 /* STUserIconView.swift in Sources */,
 				0F8694331F370FEC00315064 /* STPlayerManageAPI.swift in Sources */,
+				0F7A97BC20565C120048D86B /* STNeedMoveView.swift in Sources */,
 				0F8694591F3710E900315064 /* STTitlesViewModel.swift in Sources */,
-				0F8694771F37111E00315064 /* STCommentUserInforModel.swift in Sources */,
+				0F8BBD1520579FA8003D94E6 /* STMessageVCCell.swift in Sources */,
 				0F86946F1F37111E00315064 /* STCommentViewController.swift in Sources */,
 				0F86940A1F370CC800315064 /* MainNavigationController.swift in Sources */,
+				0F8BBD172057A987003D94E6 /* STRegisterVC.swift in Sources */,
 				0FC44E761F394D4C001779BF /* STRecommendCycleView.swift in Sources */,
 				0F8694981F37124600315064 /* STBaseViewController.swift in Sources */,
-				0F8694761F37111E00315064 /* STCommentModelFrame.swift in Sources */,
 				0F8694581F3710E900315064 /* STViewModel.swift in Sources */,
+				0F7A97BA20564CC40048D86B /* STUserModel.swift in Sources */,
 				0F86947A1F37111E00315064 /* STCommentCell.swift in Sources */,
 				0F86947D1F37111E00315064 /* STHomeViewController.swift in Sources */,
+				0F7A97B1205622480048D86B /* STCommentDiggUsersModelFrame.swift in Sources */,
 				0FC44E7C1F398C94001779BF /* STDiscoverH5ViewController.swift in Sources */,
+				0F7A97B2205622480048D86B /* STCommentModelFrame.swift in Sources */,
 				0FCA40F71F009D07007D773B /* AppDelegate.swift in Sources */,
 				0F8694A61F3731D300315064 /* STPageView.swift in Sources */,
 				0F8694A91F3731D300315064 /* UIColor-Extension.swift in Sources */,
 				0FCA41151F00DE55007D773B /* ADLinkViewController.swift in Sources */,
+				0F7A97B0205622480048D86B /* STCommentADModelFrame.swift in Sources */,
 				0FC44E781F394E45001779BF /* STRecommendCycleCell.swift in Sources */,
 				0F86942F1F370FEC00315064 /* STDownLoader.swift in Sources */,
 				0F86948D1F37113600315064 /* STCellPictureView.swift in Sources */,
+				0F8BBD1D2057BE9C003D94E6 /* STRegisterCell.swift in Sources */,
+				0F7A97A4205621A80048D86B /* STDiggUsersView.swift in Sources */,
 				0F92D4421F4425FA007DB132 /* STAnchorMainModel.swift in Sources */,
+				0F8BBD13205797FA003D94E6 /* STMessageModel.swift in Sources */,
 				0F86947E1F37111E00315064 /* STShowPictureViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

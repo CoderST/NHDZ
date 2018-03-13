@@ -12,5 +12,8 @@ pod 'XHLaunchAd', '~> 3.3.0'
 pod 'SKPhotoBrowser'
 pod 'DACircularProgress', '~> 2.3.1'
 pod 'HandyJSON', '~> 1.7.2'
-
+pod 'RealmSwift'
+pod 'YYModel'
+#DKNightVersion 暂时没用，准备加入换肤功能
+#GYDataCenter：高性能数据库框架(GYDataCenter 是一个 SQLite 数据库框架)
 end
